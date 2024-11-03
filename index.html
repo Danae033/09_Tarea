@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/estilo.css">
+    <script src="js/vue3.js"></script>
+    <title>Lista de Tareas</title>
+</head>
+<body>
+    <section id="seccion">
+        <h1>VUE</h1>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. 
+            Quisque at enim ultricies, ullamcorper elit sit amet, facilisis erat. 
+            Integer euismod lorem ut mauris euismod, eu malesuada neque pretium. 
+            Cras in lectus vitae ex blandit pharetra. Nunc fringilla quam nec nunc posuere,
+             sed pharetra libero fermentum. Aliquam erat volutpat. Nulla vitae sapien ac elit 
+             laoreet finibus sed vitae magna. Proin vel nunc sed felis vulputate sollicitudin. 
+             Fusce vel dui lacinia, accumsan dolor ut, malesuada nisl. Sed ut quam eget libero 
+             venenatis malesuada eu ac velit.
+        </p>
+
+                <input type="text" v-model="nuevaTarea">
+                <button type="button" @click="agregarTarea">Agregar</button>
+
+
+        <section>
+            <button @click="incrementar" class="incrementar">+</button>
+            <button @click="decrementar" class="decrementar">-</button>
+            <p>{{ contador }}</p>
+        </section>
+
+        <section class="barra">
+            <div class="barraCompletada" :style="{ width: porcentaje + '%' }">
+                {{ porcentaje }}%
+            </div>
+        </section>
+
+        <ul>
+            <li v-for="tarea in tareas" :key="tarea.texto" :class="{ completada: tarea.completada }" @click="alternar(tarea)">
+                {{ tarea.texto }} - {{ tarea.completada ? 'true' : 'false' }}
+            </li>
+        </ul>
+
+        <p>Tareas completas: {{ tareasCompletadas }}</p>
+    </section>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
